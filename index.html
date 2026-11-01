@@ -17,13 +17,13 @@
     <meta name="twitter:card" content="summary_large_image">
 
     <link href="index.css?v=3" rel="stylesheet" type="text/css" />
-    <script src="translate.js?v=21" defer></script>
+    <script src="translate.js?v=23" defer></script>
     <script>
         var params = new URLSearchParams(window.location.search)
         if (params.has('id')) {
             window.document.title = params.get('id') + ' - sudoku42'
         }
-        // The app is Android-only for now, so only offer the button on Android. Add iOS here once that app ships.
+        // The intent link only works on Android, so the open button stays Android-only. iOS users get the App Store badge.
         var isAndroid = /Android/.test(navigator.userAgent)
         window.addEventListener('DOMContentLoaded', function () {
             if (isAndroid && (params.has('id') || params.has('daily') || params.has('group'))) {
@@ -44,8 +44,8 @@
             <a href="https://play.google.com/store/apps/details?id=com.mriezebosch.sudoku">
                 <img class="store-badge" src="img/playstore.svg" width="224" height="66" alt="Google Play" />
             </a>
-            <a href="/iOS/">
-                <img class="store-badge" src="img/ios-waitlist.svg" width="224" height="66" alt="Coming to iOS — Join the waitlist" />
+            <a href="https://apps.apple.com/app/id1529294991">
+                <img class="store-badge" src="img/appstore.svg?v=3" width="224" height="66" alt="Download on the App Store" />
             </a>
         </div>
         <p>

@@ -249,6 +249,22 @@ footer a {
 [hidden] {
   display: none !important;
 }
+.download {
+  margin-bottom: 28px;
+}
+.store-badge-link {
+  display: inline-block;
+  max-width: 100%;
+}
+.store-badge-link img {
+  display: block;
+  width: 224px;
+  max-width: 100%;
+  height: auto;
+}
+.store-badge-small img {
+  width: 135px;
+}
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #181818;
