@@ -16,7 +16,7 @@
     <meta property="og:image:height" content="630">
     <meta name="twitter:card" content="summary_large_image">
 
-    <link href="index.css?v=3" rel="stylesheet" type="text/css" />
+    <link href="index.css?v=4" rel="stylesheet" type="text/css" />
     <script src="translate.js?v=23" defer></script>
     <script>
         var params = new URLSearchParams(window.location.search)
@@ -51,9 +51,45 @@
         <p>
             <a id="open-in-app" class="open-in-app" hidden>Open in the sudoku42 app</a>
         </p>
+        <p>
+            <button id="share-button" class="share-button" type="button" data-i18n="shareSmall" data-i18n-attr="aria-label:shareAria">Share sudoku42</button>
+        </p>
+        <p class="share-status" role="status" aria-live="polite"></p>
         <ul class="contact">
             <li><a href="mailto:mriezebosch@gmail.com?subject=sudoku42" data-i18n="contact">Contact Manuel</a></li>
         </ul>
     </div>
+    <script>
+        // Native share sheet where available; otherwise copy the link to the clipboard.
+        (function () {
+            var t = window.sudoku42T || function (key) { return key }
+            var url = 'https://sudoku42.com/'
+            var button = document.getElementById('share-button')
+            var status = document.querySelector('.share-status')
+
+            function copyLink() {
+                if (!navigator.clipboard) {
+                    status.textContent = url
+                    return
+                }
+                navigator.clipboard.writeText(url).then(function () {
+                    status.textContent = t('copied')
+                }, function () {
+                    status.textContent = url
+                })
+            }
+
+            button.addEventListener('click', function () {
+                status.textContent = ''
+                if (navigator.share) {
+                    navigator.share({ title: 'sudoku42', text: t('shareText'), url: url }).catch(function (error) {
+                        if (error.name !== 'AbortError') copyLink()
+                    })
+                    return
+                }
+                copyLink()
+            })
+        })()
+    </script>
 </body>
 </html>

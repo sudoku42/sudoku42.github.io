@@ -56,6 +56,23 @@ a {
     display: none;
 }
 
+.share-button {
+    font: inherit;
+    font-weight: bold;
+    padding: 0.6em 1.2em;
+    border: 1px solid #222;
+    border-radius: 999px;
+    background: #fff;
+    color: #222;
+    cursor: pointer;
+}
+
+.share-status {
+    min-height: 1.2em;
+    font-size: 13px;
+    color: #666;
+}
+
 .store-badge {
     width: 12rem !important;
     max-width: 100%;
