@@ -82,7 +82,7 @@
             button.addEventListener('click', function () {
                 status.textContent = ''
                 if (navigator.share) {
-                    navigator.share({ title: 'sudoku42', text: t('shareText'), url: url }).catch(function (error) {
+                    navigator.share({ url: url }).catch(function (error) {
                         if (error.name !== 'AbortError') copyLink()
                     })
                     return
